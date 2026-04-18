@@ -1,0 +1,28 @@
+@use '../../styles/tokens';
+
+.pulse {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: var(--color-secondary);
+  box-shadow: 0 0 0 4px rgba(0, 88, 190, 0.20);
+  animation: pulse 1.5s infinite var(--ease-standard);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse {
+    animation: none;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 4px rgba(0, 88, 190, 0.20);
+  }
+  50% {
+    transform: scale(1.4);
+    box-shadow: 0 0 0 8px rgba(0, 88, 190, 0.08);
+  }
+}

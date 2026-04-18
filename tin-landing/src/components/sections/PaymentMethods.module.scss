@@ -1,0 +1,118 @@
+@use '../../styles/tokens';
+@use '../../styles/typography' as *;
+@use '../../styles/mixins' as *;
+
+.section {
+  background: var(--color-surface);
+}
+
+.inner {
+  @include section-container;
+  @include section-padding-y;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 720px;
+  margin-bottom: var(--space-12);
+}
+
+.eyebrow {
+  @include label-md;
+  color: var(--color-secondary);
+}
+
+.title {
+  @include headline-md;
+
+  @media (min-width: 768px) {
+    @include headline-lg;
+  }
+}
+
+.highlight {
+  color: var(--color-secondary);
+}
+
+.lead {
+  @include body-lg;
+  color: var(--color-on-surface-variant);
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+
+  & + & {
+    margin-top: var(--space-12);
+  }
+}
+
+.groupLabel {
+  @include label-sm;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-3);
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-4);
+  }
+
+  @media (min-width: 1280px) {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+.logoCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 72px;
+  padding: var(--space-3);
+  background: var(--color-surface-container-lowest);
+  border-radius: var(--radius-xl);
+  transition:
+    transform var(--duration-base) var(--ease-standard),
+    filter var(--duration-base) var(--ease-standard),
+    box-shadow var(--duration-base) var(--ease-standard);
+  filter: grayscale(100%) opacity(0.75);
+
+  @media (hover: hover) {
+    &:hover {
+      filter: grayscale(0%) opacity(1);
+      transform: translateY(-2px);
+      @include ambient-shadow;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: filter var(--duration-base) var(--ease-standard);
+    &:hover {
+      transform: none;
+    }
+  }
+}
+
+.logoImg {
+  max-width: 100%;
+  max-height: 48px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.logoFallback {
+  @include label-md;
+  background: var(--color-surface-container-high);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
+  color: var(--color-on-surface);
+  text-align: center;
+}

@@ -1,0 +1,133 @@
+@use '../../styles/tokens';
+@use '../../styles/typography' as *;
+@use '../../styles/mixins' as *;
+
+.section {
+  background: var(--color-surface-container-low);
+}
+
+.inner {
+  @include section-container;
+  @include section-padding-y;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 720px;
+  margin-bottom: var(--space-12);
+}
+
+.eyebrow {
+  @include label-md;
+  color: var(--color-secondary);
+}
+
+.title {
+  @include headline-md;
+
+  @media (min-width: 768px) {
+    @include headline-lg;
+  }
+}
+
+.highlight {
+  color: var(--color-secondary);
+}
+
+.lead {
+  @include body-lg;
+  color: var(--color-on-surface-variant);
+}
+
+// ─── Grid (1 → 2 → 4+3 asymmetric) ──────────────────────────────────────
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 1280px) {
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: 1fr;
+    gap: var(--space-6);
+  }
+}
+
+.cardWrapper {
+  display: flex;
+  height: 100%;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  width: 100%;
+  height: 100%;
+}
+
+// Asymmetric grid (desktop only):
+// row 1 → 4 cards × span 3 (cols 1-3, 4-6, 7-9, 10-12)
+// row 2 → 3 cards × span 3, centered within the grid (cols 3-5, 6-8, 9-11)
+@media (min-width: 1280px) {
+  .cardRow1 {
+    grid-column: span 3;
+  }
+
+  .cardRow2 {
+    grid-column: span 3;
+  }
+
+  .cardRow2First {
+    grid-column-start: 3;
+  }
+
+  .cardLift {
+    transform: translateY(-8px);
+  }
+}
+
+@media (min-width: 1280px) and (prefers-reduced-motion: reduce) {
+  .cardLift {
+    transform: none;
+  }
+}
+
+.iconWrap {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-container-high);
+  color: var(--color-secondary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconFallback {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  background: rgba(0, 88, 190, 0.10);
+}
+
+.cardTitle {
+  @include headline-sm;
+}
+
+.cardTagline {
+  @include label-sm;
+  color: var(--color-secondary);
+}
+
+.cardDescription {
+  @include body-sm;
+  line-height: 1.5;
+  color: var(--color-on-surface-variant);
+}

@@ -1,0 +1,105 @@
+// TIN Sovereign Design System — Tokens
+// Mirrors sdd/specs/design_system.md § 9. Never hardcode values in components.
+
+:root {
+  // ─── Color: Text ─────────────────────────────────────────────────────────
+  --color-on-primary-fixed:          #0a0f1e;
+  --color-on-primary:                #ffffff;
+  --color-on-surface:                #191c1e;
+  --color-on-surface-variant:        #45464d;
+  --color-on-error:                  #ffffff;
+
+  // ─── Color: Brand ────────────────────────────────────────────────────────
+  --color-primary:                   #131b2e;
+  --color-primary-container:         #131b2e;
+  --color-secondary:                 #0058be;
+
+  // ─── Color: Surfaces (tonal stacking) ────────────────────────────────────
+  --color-surface:                   #f7f9fb;
+  --color-surface-container-low:     #f2f4f6;
+  --color-surface-container-lowest:  #ffffff;
+  --color-surface-container-high:    #e6e8ea;
+  --color-surface-container-highest: #dfe1e3;
+
+  // ─── Color: Utility ──────────────────────────────────────────────────────
+  --color-outline-variant:           #c6c6cd;
+  --color-error:                     #ba1a1a;
+  --color-error-container:           #ffdad6;
+
+  // ─── Typography ──────────────────────────────────────────────────────────
+  --font-family-base: 'Inter', system-ui, sans-serif;
+
+  --font-size-display-lg:  4rem;
+  --font-size-display-md:  3rem;
+  --font-size-headline-lg: 2.25rem;
+  --font-size-headline-md: 1.75rem;
+  --font-size-headline-sm: 1.375rem;
+  --font-size-body-lg:     1.125rem;
+  --font-size-body-md:     1rem;
+  --font-size-body-sm:     0.875rem;
+  --font-size-label-md:    0.8125rem;
+  --font-size-label-sm:    0.6875rem;
+
+  --line-height-display:   1.1;
+  --line-height-headline:  1.2;
+  --line-height-body:      1.6;
+  --line-height-label:     1.4;
+
+  --letter-spacing-display:  -0.02em;
+  --letter-spacing-headline: -0.01em;
+  --letter-spacing-label:     0.05em;
+
+  // ─── Radius ──────────────────────────────────────────────────────────────
+  --radius-sm:   4px;
+  --radius-md:   6px;
+  --radius-lg:   8px;
+  --radius-xl:   12px;
+  --radius-2xl:  16px;
+  --radius-full: 9999px;
+
+  // ─── Shadows (tinted via on_surface, never pure black) ───────────────────
+  --shadow-ambient:    0 8px 24px rgba(25, 28, 30, 0.10);
+  --shadow-ambient-lg: 0 8px 40px rgba(25, 28, 30, 0.12);
+  --shadow-navbar-seam: 0 1px 0 rgba(25, 28, 30, 0.08);
+
+  // ─── Spacing (4px grid) ──────────────────────────────────────────────────
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  // ─── Glassmorphism ───────────────────────────────────────────────────────
+  --glass-bg:   rgba(255, 255, 255, 0.80);
+  --glass-blur: blur(20px);
+
+  // ─── Gradients ───────────────────────────────────────────────────────────
+  --gradient-primary: linear-gradient(45deg, #131b2e, #1a2f52);
+
+  // ─── Ghost Border (felt, not seen) ───────────────────────────────────────
+  --border-ghost:        1px solid rgba(198, 198, 205, 0.15);
+  --border-ghost-strong: 1px solid rgba(198, 198, 205, 0.30);
+
+  // ─── Focus Ring ──────────────────────────────────────────────────────────
+  --focus-ring-color:  #0058be;
+  --focus-ring-width:  2px;
+  --focus-ring-offset: 2px;
+
+  // ─── Motion ──────────────────────────────────────────────────────────────
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 150ms;
+  --duration-base: 200ms;
+  --duration-slow: 400ms;
+
+  // ─── Layout ──────────────────────────────────────────────────────────────
+  --layout-max-width: 1200px;
+  --navbar-height-desktop: 64px;
+  --navbar-height-mobile:  56px;
+}

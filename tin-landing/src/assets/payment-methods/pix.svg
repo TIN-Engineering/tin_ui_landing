@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 48" role="img" aria-label="Pix">
+  <g fill="none">
+    <path d="M22 24l-7-7a4 4 0 0 1 0-5.7l1.4-1.3a4 4 0 0 1 5.6 0L29 17.3a4 4 0 0 0 5.7 0L41.7 10a4 4 0 0 1 5.6 0l1.4 1.3a4 4 0 0 1 0 5.7l-7 7 7 7a4 4 0 0 1 0 5.7l-1.4 1.3a4 4 0 0 1-5.6 0L34.7 30.7a4 4 0 0 0-5.7 0L22 38a4 4 0 0 1-5.6 0L15 36.7a4 4 0 0 1 0-5.7z" fill="#32BCAD"/>
+    <text x="58" y="30" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#0a0f1e">Pix</text>
+  </g>
+</svg>

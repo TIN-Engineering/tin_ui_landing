@@ -1,0 +1,32 @@
+@use '../../styles/tokens';
+@use '../../styles/mixins' as *;
+
+.card {
+  position: relative;
+  background: var(--color-surface-container-lowest);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-8);
+  transition:
+    transform var(--duration-base) var(--ease-standard),
+    box-shadow var(--duration-base) var(--ease-standard);
+}
+
+.raised {
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    &:hover {
+      transform: translateY(-2px);
+      @include ambient-shadow;
+    }
+  }
+
+  @media (hover: hover) and (prefers-reduced-motion: reduce) {
+    &:hover {
+      @include ambient-shadow;
+    }
+  }
+}
+
+.compact {
+  padding: var(--space-6);
+  border-radius: var(--radius-xl);
+}

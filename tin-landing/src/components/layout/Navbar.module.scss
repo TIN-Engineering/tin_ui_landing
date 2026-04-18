@@ -1,0 +1,240 @@
+@use '../../styles/tokens';
+@use '../../styles/typography' as *;
+@use '../../styles/mixins' as *;
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  height: var(--navbar-height-mobile);
+  background: rgba(255, 255, 255, 0);
+  transition:
+    background var(--duration-base) var(--ease-standard),
+    backdrop-filter var(--duration-base) var(--ease-standard),
+    box-shadow var(--duration-base) var(--ease-standard);
+
+  @media (min-width: 768px) {
+    height: var(--navbar-height-desktop);
+  }
+}
+
+.navbarScrolled {
+  @include glass-surface;
+  box-shadow: var(--shadow-navbar-seam);
+}
+
+.inner {
+  @include section-container;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  gap: var(--space-4);
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-family-base);
+  font-weight: 700;
+  font-size: var(--font-size-headline-sm);
+  color: var(--color-on-primary-fixed);
+  letter-spacing: -0.01em;
+  text-decoration: none;
+
+  @include focus-ring;
+}
+
+.logoDot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  background: var(--color-secondary);
+}
+
+.links {
+  display: none;
+  gap: var(--space-6);
+  align-items: center;
+
+  @media (min-width: 960px) {
+    display: flex;
+  }
+}
+
+.link {
+  @include body-sm;
+  color: var(--color-on-surface);
+  font-weight: 500;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease-standard);
+
+  @include focus-ring;
+
+  &:hover {
+    color: var(--color-secondary);
+  }
+}
+
+.linkActive {
+  color: var(--color-secondary);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.desktopOnly {
+  display: none;
+
+  @media (min-width: 768px) {
+    display: inline-flex;
+  }
+}
+
+.mobileOnly {
+  display: inline-flex;
+
+  @media (min-width: 960px) {
+    display: none;
+  }
+}
+
+.hamburger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  color: var(--color-on-surface);
+  cursor: pointer;
+
+  @include focus-ring;
+
+  &:hover {
+    color: var(--color-secondary);
+  }
+
+  @media (min-width: 960px) {
+    display: none;
+  }
+}
+
+// ─── Mobile drawer ──────────────────────────────────────────────────────
+.drawerBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(25, 28, 30, 0.45);
+  backdrop-filter: blur(4px);
+  z-index: 60;
+  animation: backdropIn var(--duration-base) var(--ease-standard);
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(320px, 90vw);
+  background: var(--color-surface-container-lowest);
+  padding: var(--space-6) var(--space-6) var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  z-index: 61;
+  animation: drawerIn var(--duration-base) var(--ease-standard);
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+.drawerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.drawerLabel {
+  @include label-md;
+}
+
+.drawerClose {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  color: var(--color-on-surface);
+  cursor: pointer;
+
+  @include focus-ring;
+
+  &:hover {
+    color: var(--color-secondary);
+  }
+}
+
+.drawerLinks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.drawerLink {
+  @include body-md;
+  color: var(--color-on-surface);
+  font-weight: 500;
+  padding: var(--space-4) var(--space-4);
+  border-radius: var(--radius-lg);
+  text-align: left;
+  cursor: pointer;
+
+  @include focus-ring;
+
+  &:hover {
+    background: var(--color-surface-container-high);
+  }
+}
+
+.drawerLinkActive {
+  color: var(--color-secondary);
+}
+
+.drawerActions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: auto;
+}
+
+@keyframes drawerIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes backdropIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

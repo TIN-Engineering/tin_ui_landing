@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 48" role="img" aria-label="Google Pay">
+  <rect x="4" y="10" width="112" height="28" rx="14" fill="#ffffff" stroke="#DADCE0" stroke-width="1"/>
+  <text x="20" y="30" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#4285F4">G</text>
+  <text x="30" y="30" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#EA4335">o</text>
+  <text x="40" y="30" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#FBBC04">o</text>
+  <text x="50" y="30" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#4285F4">g</text>
+  <text x="60" y="30" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#34A853">l</text>
+  <text x="66" y="30" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#EA4335">e</text>
+  <text x="80" y="30" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#5F6368">Pay</text>
+</svg>

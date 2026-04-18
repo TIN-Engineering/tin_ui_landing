@@ -1,0 +1,191 @@
+@use '../../styles/tokens';
+@use '../../styles/typography' as *;
+@use '../../styles/mixins' as *;
+
+.hero {
+  position: relative;
+  background: var(--color-surface);
+  overflow: hidden;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding-top: calc(var(--navbar-height-mobile) + var(--space-10));
+
+  @media (min-width: 768px) {
+    padding-top: calc(var(--navbar-height-desktop) + var(--space-16));
+  }
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 85% 20%, rgba(0, 88, 190, 0.08), transparent 55%),
+    radial-gradient(circle at 10% 90%, rgba(19, 27, 46, 0.06), transparent 50%);
+  pointer-events: none;
+}
+
+.inner {
+  @include section-container;
+  @include hero-padding-y;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-12);
+  align-items: center;
+
+  @media (min-width: 960px) {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: var(--space-16);
+  }
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  max-width: 640px;
+}
+
+.eyebrow {
+  @include label-md;
+  color: var(--color-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.headline {
+  @include display-md;
+
+  @media (min-width: 768px) {
+    @include display-lg;
+  }
+}
+
+.highlight {
+  color: var(--color-secondary);
+}
+
+.subtitle {
+  @include body-lg;
+  color: var(--color-on-surface-variant);
+  max-width: 560px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.proof {
+  @include label-md;
+  margin-top: var(--space-4);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-on-surface-variant);
+}
+
+// ─── Visual (right column) ──────────────────────────────────────────────
+.visual {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 5 / 4;
+  border-radius: var(--radius-2xl);
+  background: var(--color-surface-container-lowest);
+  overflow: hidden;
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+
+  @media (max-width: 600px) {
+    aspect-ratio: auto;
+    min-height: 320px;
+  }
+}
+
+.visualHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.visualLabel {
+  @include label-sm;
+  color: var(--color-on-surface-variant);
+}
+
+.visualBody {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+  gap: var(--space-3);
+}
+
+.statCard {
+  background: var(--color-surface-container-low);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.statLabel {
+  @include label-sm;
+}
+
+.statValue {
+  @include headline-md;
+  color: var(--color-on-primary-fixed);
+}
+
+.statDelta {
+  @include body-sm;
+  color: var(--color-secondary);
+  font-weight: 600;
+}
+
+.flowCard {
+  grid-column: span 2;
+  background: var(--color-surface-container-low);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.flowIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: var(--color-surface-container-lowest);
+  color: var(--color-secondary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flowText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.flowTitle {
+  @include body-md;
+  color: var(--color-on-primary-fixed);
+  font-weight: 600;
+}
+
+.flowMeta {
+  @include body-sm;
+}
