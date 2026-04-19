@@ -28,6 +28,8 @@
 
   // ─── Typography ──────────────────────────────────────────────────────────
   --font-family-base: 'Inter', system-ui, sans-serif;
+  // Monospace stack — permitted only inside code containers (see design_system.md § 2).
+  --font-family-mono: 'JetBrains Mono', 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --font-size-display-lg:  4rem;
   --font-size-display-md:  3rem;
@@ -82,6 +84,8 @@
 
   // ─── Gradients ───────────────────────────────────────────────────────────
   --gradient-primary: linear-gradient(45deg, #131b2e, #1a2f52);
+  // Closing stop of the Dark CTA Band gradient. Paired with --color-primary.
+  --color-primary-gradient-stop: #1e315f;
 
   // ─── Ghost Border (felt, not seen) ───────────────────────────────────────
   --border-ghost:        1px solid rgba(198, 198, 205, 0.15);

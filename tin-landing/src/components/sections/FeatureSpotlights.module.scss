@@ -1,0 +1,131 @@
+@use '../../styles/tokens';
+@use '../../styles/typography' as *;
+@use '../../styles/mixins' as *;
+
+.section {
+  width: 100%;
+}
+
+.sectionBase {
+  background: var(--color-surface);
+}
+
+.sectionTonal {
+  background: var(--color-surface-container-low);
+}
+
+.inner {
+  @include section-container;
+  @include section-padding-y;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-10);
+  align-items: center;
+
+  @media (min-width: 1024px) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--space-12);
+  }
+}
+
+// Desktop orientation:
+// - mediaRight: copy (col 1) + media (col 2) [default]
+// - mediaLeft:  media (col 1) + copy (col 2)
+// Mobile always stacks copy-first via source order; we only swap on desktop.
+@media (min-width: 1024px) {
+  .mediaLeft {
+    .copy {
+      order: 2;
+    }
+    .media {
+      order: 1;
+    }
+  }
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 560px;
+}
+
+.eyebrow {
+  @include label-md;
+  color: var(--color-secondary);
+}
+
+.heading {
+  @include headline-sm;
+
+  @media (min-width: 1024px) {
+    @include headline-md;
+  }
+}
+
+.body {
+  @include body-md;
+  color: var(--color-on-surface-variant);
+}
+
+.media {
+  display: flex;
+  width: 100%;
+}
+
+// ─── Image media frame ──────────────────────────────────────────────────
+.imageFrame {
+  width: 100%;
+  aspect-ratio: 5 / 4;
+  background: var(--color-surface-container-lowest);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: var(--shadow-ambient);
+}
+
+.imageEl {
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--radius-xl);
+}
+
+.imageFallback {
+  @include label-md;
+  background: var(--color-surface-container-high);
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-md);
+  color: var(--color-on-surface);
+}
+
+// ─── Code media panel (monospace permitted per design_system.md § 2) ────
+.codePanel {
+  width: 100%;
+  background: linear-gradient(
+    160deg,
+    var(--color-primary) 0%,
+    var(--color-primary-gradient-stop) 100%
+  );
+  color: var(--color-on-primary);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-5);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  box-shadow: var(--shadow-ambient);
+}
+
+.codePre {
+  margin: 0;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-label-md);
+  line-height: 1.5;
+  white-space: pre;
+  tab-size: 2;
+  color: inherit;
+}

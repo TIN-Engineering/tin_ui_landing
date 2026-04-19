@@ -14,10 +14,18 @@ interface NavLink {
 const NAV_LINKS: NavLink[] = [
   { id: 'products', label: 'Ecosistema', href: '#products' },
   { id: 'payment-methods', label: 'Métodos', href: '#payment-methods' },
+  { id: 'pricing', label: 'Pricing', href: '#pricing' },
+  { id: 'security', label: 'Seguridad', href: '#security' },
   { id: 'contact-sales', label: 'Contacto', href: '#contact-sales' },
 ]
 
-const SECTION_IDS: string[] = ['hero', 'products', 'payment-methods']
+const SECTION_IDS: string[] = [
+  'hero',
+  'products',
+  'payment-methods',
+  'pricing',
+  'security',
+]
 
 function smoothScrollTo(id: string): void {
   const target = document.getElementById(id)

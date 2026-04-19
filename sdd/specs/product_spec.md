@@ -62,6 +62,10 @@ The landing page must showcase all seven TIN engines:
 8. **Navigation (Floating)** — Glassmorphic floating nav bar with links to all key sections and dual CTAs. Sticky on scroll.
 9. **Footer** — Full navigation links, legal pages (Privacy, Terms), compliance badges, and social media links.
 10. **SEO Foundation** — Semantic HTML5, meta tags, Open Graph tags, `sitemap.xml`, `robots.txt`, and JSON-LD schema markup.
+11. **Value Pillars** — Three-up differentiators band immediately below the Hero (Cards & APMs, LatAm focus, Security). Non-interactive "fast-read" layer before the deeper Ecosystem grid.
+12. **Pricing Preview** — Three-tier pricing preview (Starter, Growth, Enterprise) with CTAs routed to Sign Up (Starter) and Contact Sales (Growth, Enterprise). No numeric rates in V1.
+13. **Final Conversion Band (Dark CTA)** — Dark gradient closing CTA above the footer with the same dual CTAs as the Hero, reinforcing the conversion decision before exit.
+14. **Testimonials** — Two-card social-proof band between Security and the Dark CTA. Semantic `<blockquote>` + `<cite>` with content ownership in Marketing.
 
 ## Acceptance Criteria
 

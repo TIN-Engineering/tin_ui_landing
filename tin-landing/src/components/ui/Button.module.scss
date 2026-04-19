@@ -64,6 +64,32 @@
   }
 }
 
+// ─── Dark theme — inverts color relationship for dark surfaces.
+// Focus ring stays --color-secondary to match light-theme consistency.
+.themeDark {
+  &.primary {
+    background: var(--color-on-primary);
+    color: var(--color-primary);
+
+    &:hover {
+      filter: none;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: var(--shadow-ambient-lg);
+    }
+  }
+
+  &.ghost {
+    background: transparent;
+    color: var(--color-on-primary);
+    outline: 1px solid rgba(198, 198, 205, 0.24);
+    outline-offset: -1px;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+  }
+}
+
 .fullWidth {
   width: 100%;
 }

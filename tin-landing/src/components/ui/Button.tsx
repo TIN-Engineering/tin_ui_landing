@@ -9,10 +9,12 @@ import styles from './Button.module.scss'
 
 type Variant = 'primary' | 'ghost'
 type Size = 'default' | 'compact'
+type Theme = 'light' | 'dark'
 
 type CommonProps = {
   variant?: Variant
   size?: Size
+  theme?: Theme
   fullWidth?: boolean
   children: ReactNode
   className?: string
@@ -35,6 +37,7 @@ export type ButtonProps = ButtonAsButton | ButtonAsAnchor
 const COMMON_KEYS = [
   'variant',
   'size',
+  'theme',
   'fullWidth',
   'children',
   'className',
@@ -55,10 +58,12 @@ function splitProps<T extends Record<string, unknown>>(
 function composeClassName(
   variant: Variant,
   size: Size,
+  theme: Theme,
   fullWidth: boolean,
   extra?: string,
 ): string {
   const parts = [styles.button, styles[variant]]
+  if (theme === 'dark') parts.push(styles.themeDark)
   if (size === 'compact') parts.push(styles.sizeCompact)
   if (fullWidth) parts.push(styles.fullWidth)
   if (extra) parts.push(extra)
@@ -69,8 +74,9 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
   (props, ref) => {
     const variant = props.variant ?? 'primary'
     const size = props.size ?? 'default'
+    const theme = props.theme ?? 'light'
     const fullWidth = props.fullWidth ?? false
-    const classes = composeClassName(variant, size, fullWidth, props.className)
+    const classes = composeClassName(variant, size, theme, fullWidth, props.className)
     const rest = splitProps(props as unknown as Record<string, unknown>)
 
     if (props.as === 'a') {
