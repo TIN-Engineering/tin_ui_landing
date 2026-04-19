@@ -77,7 +77,9 @@ background: linear-gradient(45deg, #131b2e, #1a2f52);
 
 ## 2. Typography
 
-**Typeface:** Inter exclusively. Loaded via `@fontsource/inter`. No fallback fonts in headings — only system sans-serif as last resort.
+**Typeface:** Inter is the page typeface. Loaded via `@fontsource/inter`. No fallback fonts in headings — only system sans-serif as last resort.
+
+**Monospace exception (code containers only):** A monospace stack is permitted **exclusively** inside code containers — spotlight JSON/code panels, developer surfaces, and inline `<code>` snippets. It MUST NOT be used for headings, body copy, labels, or any UI chrome. The stack is declared as `--font-family-mono` in `_tokens.scss` and is currently: `'JetBrains Mono', 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace`. Fonts are not self-hosted in V1; the system monospace fallback is acceptable.
 
 ### Type Scale
 

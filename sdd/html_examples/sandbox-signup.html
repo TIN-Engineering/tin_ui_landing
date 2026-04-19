@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Activar Sandbox - Tinpagos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600;700&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-fixed: #131b2e;
+      --on-primary: #ffffff;
+      --secondary: #0058be;
+      --surface: #f7f9fb;
+      --surface-low: #f2f4f6;
+      --surface-lowest: #ffffff;
+      --surface-high: #e6e8ea;
+      --on-surface-variant: #45464d;
+      --outline-ghost: rgba(198, 198, 205, 0.15);
+      --shadow-ambient: 0 8px 32px rgba(25, 28, 30, 0.1);
+      --font-technical: "JetBrains Mono", "IBM Plex Mono", monospace;
+      --font-brand: "IBM Plex Mono", "JetBrains Mono", monospace;
+      --font-body: "Inter", sans-serif;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--surface);
+      color: var(--primary-fixed);
+      font-family: var(--font-technical);
+      min-height: 100vh;
+    }
+
+    .page-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+    }
+
+    .form-side {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      background: radial-gradient(circle at 30% 10%, #e9effa 0%, var(--surface) 50%);
+    }
+
+    .image-side {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 60px;
+      background: #000;
+    }
+
+    .image-side .bg-main {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.9;
+    }
+
+    .image-side .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.2) 100%);
+    }
+
+    .commercial-content {
+      position: relative;
+      z-index: 10;
+      color: white;
+    }
+
+    .logo-premium {
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 700;
+      font-size: 8rem;
+      letter-spacing: -0.04em;
+      line-height: 0.8;
+      margin: 0;
+      text-transform: uppercase;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
+    }
+
+    .tagline-premium {
+      font-family: var(--font-technical);
+      font-size: 1rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      margin: 16px 0 48px;
+      color: rgba(255,255,255,0.95);
+      font-weight: 500;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .capabilities-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      max-width: 600px;
+    }
+
+    .capability-badge {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 12px 20px;
+      border-radius: 4px;
+      font-family: var(--font-technical);
+      font-size: 0.7rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+
+    .capability-badge .code-marker {
+      color: #4ade80;
+      font-weight: 700;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 440px;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 40px;
+    }
+
+    .logo {
+      font-family: var(--font-brand);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      font-size: 1.28rem;
+    }
+
+    .logo-link {
+      text-decoration: none;
+      color: var(--primary-fixed);
+    }
+
+    .header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--surface-low);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.68rem;
+      font-family: var(--font-brand);
+      color: var(--secondary);
+      letter-spacing: 0.05em;
+    }
+
+    .header-badge svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    .card {
+      background: var(--surface-lowest);
+      border-radius: var(--radius-xl);
+      padding: 32px;
+      box-shadow: var(--shadow-ambient);
+    }
+
+    .eyebrow {
+      color: var(--secondary);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      font-family: var(--font-brand);
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 1.6rem;
+      letter-spacing: -0.01em;
+      font-family: var(--font-brand);
+    }
+
+    .subtitle {
+      color: var(--on-surface-variant);
+      font-size: 0.88rem;
+      line-height: 1.4;
+      margin: 0 0 24px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      display: block;
+      font-family: var(--font-brand);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--on-surface-variant);
+      margin-bottom: 6px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--surface-high);
+      border-radius: var(--radius-md);
+      background: var(--surface-low);
+      font-family: var(--font-technical);
+      font-size: 0.85rem;
+      color: var(--primary-fixed);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      outline: none;
+    }
+
+    input:focus, select:focus {
+      border-color: var(--secondary);
+      box-shadow: 0 0 0 3px rgba(0, 88, 190, 0.1);
+    }
+
+    input::placeholder {
+      color: var(--on-surface-variant);
+      opacity: 0.6;
+    }
+
+    .btn {
+      width: 100%;
+      border: 0;
+      border-radius: 999px;
+      padding: 14px 20px;
+      font-family: var(--font-brand);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+
+    .btn-primary {
+      background: var(--primary-fixed);
+      color: var(--on-primary);
+      box-shadow: 0 4px 16px rgba(19, 27, 46, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: #1e2a45;
+      box-shadow: 0 6px 20px rgba(19, 27, 46, 0.3);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--primary-fixed);
+      border: 1px solid var(--surface-high);
+      margin-top: 12px;
+    }
+
+    .btn-secondary:hover {
+      background: var(--surface-low);
+    }
+
+    .icon {
+      width: 16px;
+      height: 16px;
+      display: inline-block;
+      flex: 0 0 16px;
+    }
+
+    .icon svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 20px 0;
+      color: var(--on-surface-variant);
+      font-size: 0.72rem;
+      font-family: var(--font-brand);
+    }
+
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--surface-high);
+    }
+
+    .footer-text {
+      text-align: center;
+      margin-top: 20px;
+      color: var(--on-surface-variant);
+      font-size: 0.72rem;
+      font-family: var(--font-brand);
+    }
+
+    .footer-text a {
+      color: var(--secondary);
+      text-decoration: none;
+    }
+
+    .footer-text a:hover {
+      text-decoration: underline;
+    }
+
+    .trust-badges {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid var(--surface-low);
+    }
+
+    .trust-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.65rem;
+      font-family: var(--font-brand);
+      color: var(--on-surface-variant);
+      letter-spacing: 0.03em;
+    }
+
+    .trust-badge svg {
+      width: 14px;
+      height: 14px;
+      color: var(--secondary);
+    }
+
+    @media (max-width: 900px) {
+      .page-layout {
+        grid-template-columns: 1fr;
+      }
+      .image-side {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-layout">
+    <div class="form-side">
+      <div class="container">
+        <header class="header">
+          <a href="#" class="logo-link">
+            <span class="logo">TIN</span>
+          </a>
+          <div class="header-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2c-2 0-4 2-4 4v4H6c-1 0-2 1-2 2v8c0 1 1 2 2 2h12c1 0 2-1 2-2v-8c0-1-1-2-2-2h-2V6c0-2-2-4-4-4z"/>
+            </svg>
+            Sandbox
+          </div>
+        </header>
+
+        <div class="card">
+          <div class="eyebrow">Crea tu cuenta</div>
+          <h1>Crea tu cuenta y empieza a procesar</h1>
+          <p class="subtitle">Empieza a desarrollar con una cuenta de sandbox completamente activa. El ambiente de producción se habilitará cuando estés listo.</p>
+
+          <form id="sandbox-form">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="firstName">Nombre</label>
+                <input
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  placeholder="Juan"
+                  required
+                  autocomplete="given-name"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="lastName">Apellido</label>
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  placeholder="García"
+                  required
+                  autocomplete="family-name"
+                />
+              </div>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="email">Correo electrónico</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="tu@email.com"
+                required
+                autocomplete="email"
+              />
+            </div>
+
+            <div class="form-group full-width">
+              <label for="company">Nombre de tu empresa</label>
+              <input
+                type="text"
+                id="company"
+                name="company"
+                placeholder="Mi Empresa SAS"
+                required
+                autocomplete="organization"
+              />
+            </div>
+
+            <div class="form-group full-width">
+              <label for="country">País de operación</label>
+              <select id="country" name="country" required>
+                <option value="" disabled selected>Selecciona un país</option>
+                <option value="CO">🇨🇴 Colombia</option>
+                <option value="MX">🇲🇽 México</option>
+                <option value="CL">🇨🇱 Chile</option>
+                <option value="PE">🇵🇪 Perú</option>
+                <option value="AR">🇦🇷 Argentina</option>
+                <option value="EC">🇪🇨 Ecuador</option>
+                <option value="BO">🇧🇴 Bolivia</option>
+                <option value="PA">🇵🇦 Panamá</option>
+                <option value="CR">🇨🇷 Costa Rica</option>
+                <option value="UY">🇺🇾 Uruguay</option>
+              </select>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="phone">Teléfono (opcional)</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="+57 300 123 4567"
+                autocomplete="tel"
+              />
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+              <span class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </span>
+              Activar sandbox
+            </button>
+
+            <div class="divider">o</div>
+
+            <button type="button" class="btn btn-secondary">
+              <span class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M15 12H3M21 3v18"/>
+                  <path d="M10 17l5-5-5-5"/>
+                </svg>
+              </span>
+              Ir al merchant panel
+            </button>
+          </form>
+
+          <p class="footer-text">
+            Al activar aceptas nuestros <a href="#">términos de servicio</a> y <a href="#">política de privacidad</a>.
+          </p>
+
+          <div class="trust-badges">
+            <div class="trust-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+              Datos seguros
+            </div>
+            <div class="trust-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 6v6l4 2"/>
+              </svg>
+              Activación instantánea
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="image-side">
+      <img alt="Professional workspace" class="bg-main" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeYS4ve1tcUf5hwyZDny63FWBXA-zam1kHNgvORJTr_mf5PWkfFDxeH8wK_Y2GPX6ttOwp76W1AsuRpekDNnnTSjmfi0S0cQ0mlL3Us8FVSLNBF6iFymd2u1yqyexbGK2Ra5ANQG7h2isL_nccym3CL4b_126YCtl4ywvGOtj38Q8IBamnnIVexIGGZoqhsHLawsywwSoTXrYQ4iPPwmwHwxP4BhDhvdbs8QuMKvdOp6kCIH2lW_xW8zDbr46KS6gPWVXUw0dan7bg"/>
+      <div class="overlay"></div>
+      <div class="commercial-content">
+        <h2 class="logo-premium">TIN</h2>
+        <p class="tagline-premium">Pagos sin enredos</p>
+        <div class="capabilities-grid">
+          <div class="capability-badge">
+            <span class="code-marker">01</span>
+            <span>PCI-DSS COMPLIANT</span>
+          </div>
+          <div class="capability-badge">
+            <span class="code-marker">02</span>
+            <span>ISO-27001 SECURED</span>
+          </div>
+          <div class="capability-badge">
+            <span class="code-marker">03</span>
+            <span>WEBHOOKS READY</span>
+          </div>
+          <div class="capability-badge">
+            <span class="code-marker">04</span>
+            <span>API V3.2.0 LIVE</span>
+          </div>
+          <div class="capability-badge">
+            <span class="code-marker">05</span>
+            <span>GLOBAL SETTLEMENT</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    document.getElementById('sandbox-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const data = {
+        firstName: document.getElementById('firstName').value,
+        lastName: document.getElementById('lastName').value,
+        email: document.getElementById('email').value,
+        company: document.getElementById('company').value,
+        country: document.getElementById('country').value,
+        phone: document.getElementById('phone').value
+      };
+
+      console.log('Sandbox signup:', data);
+      
+      // El primer usuario creado (admin) queda asociado al merchant
+      alert('¡Cuenta sandbox creada!\n\nEl usuario ' + data.email + ' será el administrador de tu merchant.');
+    });
+  </script>
+</body>
+</html>
